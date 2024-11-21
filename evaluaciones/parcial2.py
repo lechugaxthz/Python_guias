@@ -23,7 +23,7 @@
 
 from queue import Queue as Cola
 
-def orden_de_atencion(urgentes: Cola[int], postergables: Cola[int]) -> Cola[int]:
+#def orden_de_atencion(urgentes: Cola[int], postergables: Cola[int]) -> Cola[int]:
     
 
 #--------------------------------------------------------------------------------
@@ -45,7 +45,7 @@ def orden_de_atencion(urgentes: Cola[int], postergables: Cola[int]) -> Cola[int]
 # }
 
 ##def alarma_epidemiologica(registros: list[(int, str)], infecciosas: list[str], umbral: float) -> dict[str, float]:
-    
+
 
 #--------------------------------------------------------------------------------
 
@@ -83,8 +83,25 @@ def orden_de_atencion(urgentes: Cola[int], postergables: Cola[int]) -> Cola[int]
 # de camas del piso i}
 # }
 
-####def nivel_de_ocupacion(camas_por_piso: list[list[bool]]) -> list[float]:
-  
+def nivel_de_ocupacion(camas_por_piso: list[list[bool]]) -> list[float]:
+    res_list : list[float] = []
+    
+    for piso in camas_por_piso:
+        res_list.append(camas_ocupadas(piso)/len(piso))
+    return res_list
+    
+    
+def camas_ocupadas(piso:list[bool]) -> int:
+    res_cant : int = 0
+    for cama in piso:
+        if cama :
+            res_cant += 1
+    return res_cant
+ 
+print(nivel_de_ocupacion([
+     [True,False, False, False, True],
+     [False, True,True,True,True]
+     ])) 
 
 #--------------------------------------------------------------------------------
 
